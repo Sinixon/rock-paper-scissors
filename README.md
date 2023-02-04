@@ -1,1 +1,1 @@
-# rock-paper-scissors
+The game rock paper scissors made from The Odin Project. First a console version which later will be transformed to having an UI as well.
