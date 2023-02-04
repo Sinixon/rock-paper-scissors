@@ -1,38 +1,64 @@
 const ROCK_PAPER_SCISSORS = ['rock', 'paper', 'scissors'];
-let askForInput = true;
 let playerSelection;
+let playerWins = 0;
+let computerWins = 0;
 
-console.log('Welcome to a game of rock paper scissors');
+console.log('Welcome to a game of rock paper scissors. You will be playing 5 games in total.');
 
-while (askForInput) {
-   playerSelection = prompt("rock / paper / scissors").toLowerCase();
-   for (let i = 0; i < ROCK_PAPER_SCISSORS.length; i++) {
-       if (playerSelection === ROCK_PAPER_SCISSORS[i]) {
-           askForInput = false;
-       }
-   }
-}
+game();
+printWinner();
 
-const computerSelection = getComputerChoice();
+function playRound(playerSelection, computerSelection, round) {
+    let playerWinsText = `Result of round ${round}: Player wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
 
-console.log(playRound(playerSelection, computerSelection));
-
-function playRound(playerSelection, computerSelection) {
-   if (playerSelection === computerSelection) {
-       return `It's a draw. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
-   } else if ((playerSelection === 'rock') && (computerSelection === 'scissors')) {
-       return `Player wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
-   } else if ((playerSelection === 'paper') && (computerSelection === 'rock')) {
-       return `Player wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
-   } else if ((playerSelection === 'scissors') && (computerSelection === 'paper')) {
-       return `Player wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
-   } else {
-       return `Computer wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
-   }
+    if (playerSelection === computerSelection) {
+        return `Result of round ${round}: It's a draw. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
+    } else if ((playerSelection === 'rock') && (computerSelection === 'scissors')) {
+        playerWins++;
+        return playerWinsText;
+    } else if ((playerSelection === 'paper') && (computerSelection === 'rock')) {
+        playerWins++;
+        return playerWinsText;
+    } else if ((playerSelection === 'scissors') && (computerSelection === 'paper')) {
+        playerWins++;
+        return playerWinsText;
+    } else {
+        computerWins++;
+        return `Result of round ${round}: Computer wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
+    }
 }
 
 function getComputerChoice() {
+    return ROCK_PAPER_SCISSORS[Math.floor(Math.random() * ROCK_PAPER_SCISSORS.length)];
+}
+
+function game() {
+    for (let i = 1; i <= 5; i++) {
+        let askForInput = true;
+        while (askForInput) {
+            playerSelection = prompt("rock / paper / scissors").toLowerCase();
+            for (let i = 0; i < ROCK_PAPER_SCISSORS.length; i++) {
+                if (playerSelection === ROCK_PAPER_SCISSORS[i]) {
+                    askForInput = false;
+                }
+            }
+        }
+
+        const computerSelection = getComputerChoice();
 
 
-   return ROCK_PAPER_SCISSORS[Math.floor(Math.random() * ROCK_PAPER_SCISSORS.length)];
+        console.log(playRound(playerSelection, computerSelection, i));
+        console.log(`Score table: Player: ${playerWins} || Computer: ${computerWins}`);
+    }
+}
+
+function printWinner() {
+    console.log(`Final score table: Player: ${playerWins} || Computer: ${computerWins}`);
+    if (playerWins > computerWins) {
+        return console.log('The player won');
+    } else if (playerWins < computerWins) {
+        return console.log('The computer won');
+    } else {
+        return console.log('No winner could be determined due to a draw.');
+    }
 }
