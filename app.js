@@ -36,7 +36,7 @@ function game() {
     for (let i = 1; i <= 5; i++) {
         let askForInput = true;
         while (askForInput) {
-            playerSelection = prompt("rock / paper / scissors").toLowerCase();
+            playerSelection = prompt(`rock / paper / scissors choice for game: ${i}`).toLowerCase();
             for (let i = 0; i < ROCK_PAPER_SCISSORS.length; i++) {
                 if (playerSelection === ROCK_PAPER_SCISSORS[i]) {
                     askForInput = false;
