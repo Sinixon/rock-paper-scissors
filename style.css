@@ -16,7 +16,7 @@ body {
     margin: 0 300px 0 300px;
 }
 
-#result {
+#result, #endOfGame {
     text-align: center;
 }
 .buttonContainer {
