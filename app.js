@@ -5,27 +5,28 @@ let computerWins = 0;
 
 //console.log('Welcome to a game of rock paper scissors. You will be playing 5 games in total.');
 
-game();
-printWinner();
 
-function playRound(playerSelection, computerSelection, round) {
-    let playerWinsText = `Result of round ${round}: Player wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
+function playRound(playerSelection, computerSelection) {
+    let playerWinsText = `Player wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
 
     if (playerSelection === computerSelection) {
-        return `Result of round ${round}: It's a draw. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
+        return document.getElementById("result").innerHTML = `It's a draw. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
     } else if ((playerSelection === 'rock') && (computerSelection === 'scissors')) {
         playerWins++;
-        return playerWinsText;
+        document.getElementById("result").innerHTML = playerWinsText;
     } else if ((playerSelection === 'paper') && (computerSelection === 'rock')) {
         playerWins++;
-        return playerWinsText;
+        document.getElementById("result").innerHTML = playerWinsText;
     } else if ((playerSelection === 'scissors') && (computerSelection === 'paper')) {
         playerWins++;
-        return playerWinsText;
+        document.getElementById("result").innerHTML = playerWinsText;              
     } else {
         computerWins++;
-        return `Result of round ${round}: Computer wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
+        return document.getElementById("result").innerHTML = `Computer wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;                 
     }
+
+    document.getElementById("playerCounter").innerHTML = playerWins;
+    document.getElementById("computerCounter").innerHTML = computerWins;
 }
 
 function getComputerChoice() {
