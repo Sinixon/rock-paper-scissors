@@ -6,5 +6,26 @@
         <script src="app.js"></script>
     </head>
     <body>
+        <header>
+            <section class="scoreCard">
+                <div class="playerContainer">
+                    <h1>Your Score</h1>
+                <h1 id="playerCounter">0</h1>
+            </div>
+                <h1>Rock Paper Scissors</h1>
+                <div class="computerContainer">
+                    <h1>CPU Score</h1>
+                <h1 id="computerCounter">0</h1>
+            </div>
+            </section>
+        </header>
+        <div class="gameContainer">
+            <h2 id="result">Make A Choice:</h2>
+            <div class="buttonContainer">
+            <button onclick="playRound('rock', getComputerChoice())">Rock</button>
+            <button onclick="playRound('paper', getComputerChoice())">Paper</button>
+            <button onclick="playRound('scissor', getComputerChoice())">Scissor</button>
+        </div>
+        </div>
     </body>
 </html>
