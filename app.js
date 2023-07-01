@@ -10,7 +10,7 @@ function playRound(playerSelection, computerSelection) {
     let playerWinsText = `Player wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
 
     if (playerSelection === computerSelection) {
-        return document.getElementById("result").innerHTML = `It's a draw. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
+        document.getElementById("result").innerHTML = `It's a draw. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;
     } else if ((playerSelection === 'rock') && (computerSelection === 'scissors')) {
         playerWins++;
         document.getElementById("result").innerHTML = playerWinsText;
@@ -22,11 +22,12 @@ function playRound(playerSelection, computerSelection) {
         document.getElementById("result").innerHTML = playerWinsText;              
     } else {
         computerWins++;
-        return document.getElementById("result").innerHTML = `Computer wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;                 
+        document.getElementById("result").innerHTML = `Computer wins. Player chose: ${playerSelection} and the computer chose: ${computerSelection}`;                 
     }
 
     document.getElementById("playerCounter").innerHTML = playerWins;
-    document.getElementById("computerCounter").innerHTML = computerWins;
+    document.getElementById("computerCounter").innerHTML = computerWins;    
+    
 }
 
 function getComputerChoice() {
